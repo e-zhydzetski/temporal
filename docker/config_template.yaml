@@ -362,6 +362,8 @@ namespaceDefaults:
 publicClient:
     hostPort: "{{ default .Env.PUBLIC_FRONTEND_ADDRESS $defaultPublicHostPost }}"
 
+{{- if .Env.DYNAMIC_CONFIG_FILE_PATH }}
 dynamicConfigClient:
     filepath: "{{ default .Env.DYNAMIC_CONFIG_FILE_PATH "/etc/temporal/config/dynamicconfig/docker.yaml" }}"
     pollInterval: "60s"
+{{- end }}
